@@ -1,4 +1,8 @@
 transformers == 3.5.1
 streamlit == 0.69.3
-torch == 1.7.0+cu101
+
+--find-links https://download.pytorch.org/whl/torch_stable.html
+
+torch==1.2.0+cpu
+
 st-annotated-text == 1.0.1
