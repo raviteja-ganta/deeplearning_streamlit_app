@@ -162,7 +162,8 @@ def main():
 		st.text("")
 		raw_text = st.text_area("Enter Text Here","Type Here")
 		raw_text1 = raw_text.title()
-		model = load_model_ner('Named Entity Recognition/best_model_state_ner_f2.bin')
+		#model = load_model_ner('Named Entity Recognition/best_model_state_ner_f2.bin')
+		model = load_model_ner('https://github.com/raviteja-ganta/deeplearning_streamlit_app/blob/main/Named%20Entity%20Recognition/best_model_state_ner_f2.bin')
 		if st.button("Analyze"):
 			pred = make_predictions_ner(raw_text1,raw_text,model,pre_model_name_ner)
 
@@ -191,7 +192,8 @@ def main():
 		st.text("")
 		raw_text = st.text_area("Enter Text Here","Type Here")
 		
-		model = load_model_sentiment('Sentiment Analysis/best_model_state_sentiment_a2.bin')
+		#model = load_model_sentiment('Sentiment Analysis/best_model_state_sentiment_a2.bin')
+		model = load_model_sentiment('https://github.com/raviteja-ganta/deeplearning_streamlit_app/blob/main/Sentiment%20Analysis/best_model_state_sentiment_a2.bin')
 		if st.button("Analyze"):
 			pred = make_predictions_sent(raw_text,model,pre_model_name_sent)
 			st.text("")
