@@ -1,8 +1,8 @@
 import numpy as np
 import pandas as pd
 import streamlit as st
-#from annotated_text import annotated_text
-from st_annotated_text import annotated_text
+from annotated_text import annotated_text
+#from st_annotated_text import annotated_text
 
 import torch
 from torch.utils.data import Dataset, TensorDataset, DataLoader, RandomSampler, SequentialSampler
