@@ -4,13 +4,13 @@ import streamlit as st
 #from annotated_text import annotated_text
 #from st_annotated_text import annotated_text
 
-#import torch
-#from torch.utils.data import Dataset, TensorDataset, DataLoader, RandomSampler, SequentialSampler
+import torch
+from torch.utils.data import Dataset, TensorDataset, DataLoader, RandomSampler, SequentialSampler
 
 from itertools import cycle, islice
 
-#import transformers
-#from transformers import DistilBertForSequenceClassification, BertTokenizer, BertConfig, BertForTokenClassification, AdamW, get_linear_schedule_with_warmup, DistilBertTokenizer 
+import transformers
+from transformers import DistilBertForSequenceClassification, BertTokenizer, BertConfig, BertForTokenClassification, AdamW, get_linear_schedule_with_warmup, DistilBertTokenizer 
 
 #from seqeval.metrics import f1_score, accuracy_score
 

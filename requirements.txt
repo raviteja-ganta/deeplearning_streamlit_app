@@ -1,8 +1,5 @@
-transformers == 3.5.1
-streamlit == 0.69.3
-
---find-links https://download.pytorch.org/whl/torch_stable.html
-
-torch==1.2.0+cpu
-
-st-annotated-text == 1.0.1
+-f https://download.pytorch.org/whl/torch_stable.html
+streamlit==0.70.0
+torch==1.6.0+cpu
+torchvision==0.7.0+cpu
+transformers
