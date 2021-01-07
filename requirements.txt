@@ -1,4 +1,4 @@
-transformers
+transformers == 3.5.1
 streamlit == 0.69.3
 torch == 1.7.0+cu101
 st-annotated-text == 1.0.1
