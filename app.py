@@ -8,7 +8,6 @@ import streamlit as st
 #from torch.utils.data import Dataset, TensorDataset, DataLoader, RandomSampler, SequentialSampler
 
 from itertools import cycle, islice
-!pip install -qq transformers
 
 import transformers
 from transformers import DistilBertForSequenceClassification, BertTokenizer, BertConfig, BertForTokenClassification, AdamW, get_linear_schedule_with_warmup, DistilBertTokenizer 
