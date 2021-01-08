@@ -20,6 +20,7 @@ import base64
 from pathlib import Path
 import requests
 import os
+import urllib.request
 
 RANDOM_SEED = 42
 np.random.seed(RANDOM_SEED)
@@ -92,11 +93,12 @@ def load_model_ner():
     ner_model.eval()
     return ner_model
     
+url_sent = https://zenodo.org/api/files/c3f107db-d31e-4b27-87c0-a316620a7d3b/best_model_state_sentiment_a2.bin
+
 @st.cache
 def load_model_sentiment():
     """Loading already saved model"""
     
-    url_sent = https://zenodo.org/api/files/c3f107db-d31e-4b27-87c0-a316620a7d3b/best_model_state_sentiment_a2.bin
     Bertmodel = DistilBertForSequenceClassification.from_pretrained('distilbert-base-cased', num_labels = 2)
 
     sent_model = Bertmodel
