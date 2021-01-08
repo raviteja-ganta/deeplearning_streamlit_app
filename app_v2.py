@@ -110,7 +110,7 @@ def load_model_sentiment():
             download_file_from_google_drive('1ibrN3PF45pWTPCSrCZecTUK3AzcDdrv5', f_checkpoint)
             
     
-    sent_model.load_state_dict(torch.load(model_path, map_location = torch.device('cpu')))
+    sent_model.load_state_dict(torch.load(f_checkpoint, map_location = torch.device('cpu')))
     sent_model = sent_model.to(device)
     
     return sent_model
