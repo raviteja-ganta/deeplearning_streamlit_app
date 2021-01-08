@@ -106,7 +106,7 @@ def load_model_ner():
 	ner_model = Bertmodel
 	
 	save_dest = Path('Streamlit app')
-    save_dest.mkdir(exist_ok=True)
+    #save_dest.mkdir(exist_ok=True)
 	
 	f_checkpoint = Path("Streamlit app/best_model_state_ner_f2.bin")
 	
