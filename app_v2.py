@@ -59,7 +59,7 @@ tag_map_index = {0: 'PAD',
  18: '[CLS]',
  19: '[SEP]'}
  
- url_sent = https://zenodo.org/api/files/c3f107db-d31e-4b27-87c0-a316620a7d3b/best_model_state_sentiment_a2.bin
+url_sent = https://zenodo.org/api/files/c3f107db-d31e-4b27-87c0-a316620a7d3b/best_model_state_sentiment_a2.bin
 
 st.markdown(
     f"""
