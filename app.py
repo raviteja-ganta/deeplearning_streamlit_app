@@ -156,34 +156,34 @@ def main():
 	activities = ['NER Checker','Sentiment Classification']
 	choice = st.sidebar.selectbox("Select Activity",activities)
 	
-	if choice == 'NER Checker':
-		st.header('Named Entity Recognition')
-		st.text("")
-		st.text("")
-		raw_text = st.text_area("Enter Text Here","Type Here")
-		raw_text1 = raw_text.title()
-		model = load_model_ner('Named Entity Recognition/best_model_state_ner_f2.bin')
+	#if choice == 'NER Checker':
+	#	st.header('Named Entity Recognition')
+	#	st.text("")
+	#	st.text("")
+	#	raw_text = st.text_area("Enter Text Here","Type Here")
+	#	raw_text1 = raw_text.title()
+	#	model = load_model_ner('Named Entity Recognition/best_model_state_ner_f2.bin')
 		#model = load_model_ner('https://github.com/raviteja-ganta/deeplearning_streamlit_app/blob/main/Named%20Entity%20Recognition/best_model_state_ner_f2.bin')
-		if st.button("Analyze"):
-			pred = make_predictions_ner(raw_text1,raw_text,model,pre_model_name_ner)
+	#	if st.button("Analyze"):
+	#		pred = make_predictions_ner(raw_text1,raw_text,model,pre_model_name_ner)
 
-			annotated_text(*pred)
+	#		annotated_text(*pred)
 
 	
 	
 	
-		st.text('''
-			   geo = Geographical Entity
-			   org = Organization
-			   per = Person
-			   gpe = Geopolitical Entity
-			   tim = Time indicator
-			   art = Artifact
-			   eve = Event
-			   nat = Natural Phenomenon
-			   
-			   B - indicates first token in multi-token entity and I - indicates one in middle of multi-token entity'''
-			   )
+	#	st.text('''
+	#		   geo = Geographical Entity
+	#		   org = Organization
+	#		   per = Person
+	#		   gpe = Geopolitical Entity
+	#		   tim = Time indicator
+	#		   art = Artifact
+	#		   eve = Event
+	#		   nat = Natural Phenomenon
+	#		   
+	#		   B - indicates first token in multi-token entity and I - indicates one in middle of multi-token entity'''
+	#		   )
 			  
 		
 	if choice == 'Sentiment Classification':
