@@ -69,20 +69,6 @@ st.markdown(
     """,
     unsafe_allow_html=True)
 	
-def save_response_content(response, destination):
-	CHUNK_SIZE = 32768
-
-	with open(destination, "wb") as f:
-		for chunk in response.iter_content(CHUNK_SIZE):
-			if chunk: # filter out keep-alive new chunks
-				f.write(chunk)
-				
-def get_confirm_token(response):
-    for key, value in response.cookies.items():
-        if key.startswith('download_warning'):
-			return value
-			
-	return None
 
 def download_file_from_google_drive(id, destination):
 	URL = "https://docs.google.com/uc?export=download"
@@ -96,10 +82,31 @@ def download_file_from_google_drive(id, destination):
 		params = {'id':id,'confirm':token}
 		response = session.get(URL, params = params, stream = True)
 
-    save_response_content(response, destination) 
+    save_response_content(response, destination)
+
+	
+def get_confirm_token(response):
+    for key, value in response.cookies.items():
+        if key.startswith('download_warning'):
+			return value
+			
+	return None
+	
+	
+def save_response_content(response, destination):
+	CHUNK_SIZE = 32768
+
+	with open(destination, "wb") as f:
+		for chunk in response.iter_content(CHUNK_SIZE):
+			if chunk: # filter out keep-alive new chunks
+				f.write(chunk)
+				
+				
+ 
 	
 	
 
+	
 @st.cache
 def load_model_ner():
 	"""Loading already saved model"""
