@@ -99,7 +99,7 @@ def load_model_sentiment():
     url_sent = 'https://zenodo.org/api/files/c3f107db-d31e-4b27-87c0-a316620a7d3b/best_model_state_sentiment_a2.bin'
     Bertmodel = DistilBertForSequenceClassification.from_pretrained('distilbert-base-cased', num_labels = 2)
 
-    #sent_model = Bertmodel
+    sent_model = Bertmodel
     
     #save_dest = Path('model')
     #save_dest.mkdir(exist_ok=True)
