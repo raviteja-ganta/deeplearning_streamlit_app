@@ -59,6 +59,7 @@ tag_map_index = {0: 'PAD',
  18: '[CLS]',
  19: '[SEP]'}
  
+ url_sent = https://zenodo.org/api/files/c3f107db-d31e-4b27-87c0-a316620a7d3b/best_model_state_sentiment_a2.bin
 
 st.markdown(
     f"""
@@ -93,7 +94,8 @@ def load_model_ner():
     ner_model.eval()
     return ner_model
     
-url_sent = https://zenodo.org/api/files/c3f107db-d31e-4b27-87c0-a316620a7d3b/best_model_state_sentiment_a2.bin
+
+
 
 @st.cache
 def load_model_sentiment():
@@ -226,7 +228,15 @@ def main():
         raw_text = st.text_area("Enter Text Here","Type Here")
         
         #model = load_model_sentiment('Sentiment Analysis/best_model_state_sentiment_a2.bin')
-        model = load_model_sentiment()
+        Bertmodel = DistilBertForSequenceClassification.from_pretrained('distilbert-base-cased', num_labels = 2)
+
+        model = Bertmodel
+        
+        model.load_state_dict(torch.load(url_sent, map_location = torch.device('cpu')))
+        model = model.to(device)
+        model.eval()
+        
+        #model = load_model_sentiment()
         if st.button("Analyze"):
             pred = make_predictions_sent(raw_text,model,pre_model_name_sent)
             st.text("")
