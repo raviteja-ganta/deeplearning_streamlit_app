@@ -91,8 +91,8 @@ def download_file_from_google_drive(id, destination):
     token = get_confirm_token(response)
 
     if token:
-        params = { 'id' : id, 'confirm' : token }
-        response = session.get(URL, params = params, stream = True)
+		params = { 'id' : id, 'confirm' : token }
+		response = session.get(URL, params = params, stream = True)
 
     save_response_content(response, destination) 
 	
@@ -105,16 +105,16 @@ def load_model_ner():
 
 	ner_model = Bertmodel
 	
-	save_dest = Path('Streamlit app')
-    #save_dest.mkdir(exist_ok=True)
+	save_dest = Path('model')
+    save_dest.mkdir(exist_ok=True)
 	
-	f_checkpoint = Path("Streamlit app/best_model_state_ner_f2.bin")
+	f_checkpoint = Path("best_model_state_ner_f2.bin")
 	
 	if not f_checkpoint.exists():
-        with st.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
-            download_file_from_google_drive('1ibrN3PF45pWTPCSrCZecTUK3AzcDdrv5', f_checkpoint)
+		with st.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
+			download_file_from_google_drive('1ibrN3PF45pWTPCSrCZecTUK3AzcDdrv5', f_checkpoint)
 			
-			
+	
 	ner_model.load_state_dict(torch.load(f_checkpoint, map_location = torch.device('cpu')))
 	ner_model = ner_model.to(device)
 	
@@ -127,10 +127,10 @@ def load_model_sentiment():
 
 	sent_model = Bertmodel
 	
-		save_dest = Path('Streamlit app')
+	save_dest = Path('model')
     save_dest.mkdir(exist_ok=True)
 	
-	f_checkpoint = Path("Streamlit app/best_model_state_sentiment_a2.bin")
+	f_checkpoint = Path("best_model_state_sentiment_a2.bin")
 	
 	if not f_checkpoint.exists():
         with st.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
