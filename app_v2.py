@@ -70,44 +70,6 @@ st.markdown(
     unsafe_allow_html=True)
 	
 @st.cache
-def download_file_from_google_drive(id, destination):
-	URL = 'https://docs.google.com/uc?export=download'
-
-	session = requests.Session()
-
-	response = session.get(URL, params = {'id':id}, stream = True)
-	token = get_confirm_token(response)
-
-	if token:
-		params = {'id':id,'confirm':token}
-		response = session.get(URL, params = params, stream = True)
-
-	save_response_content(response,destination)
-
-
-@st.cache	
-def get_confirm_token(response):
-    for key, value in response.cookies.items():
-        if key.startswith('download_warning'):
-			return value
-	return None
-	
-@st.cache	
-def save_response_content(response, destination):
-	CHUNK_SIZE = 32768
-
-	with open(destination, "wb") as f:
-		for chunk in response.iter_content(CHUNK_SIZE):
-			if chunk: # filter out keep-alive new chunks
-				f.write(chunk)
-				
-				
- 
-	
-	
-
-	
-@st.cache
 def load_model_ner():
 	"""Loading already saved model"""
 	Bertmodel = BertForTokenClassification.from_pretrained("bert-base-cased", num_labels=20, output_attentions = False, output_hidden_states = False)
@@ -121,6 +83,7 @@ def load_model_ner():
 	
 	if not f_checkpoint.exists():
 		with st.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
+			from utils import download_file_from_google_drive
 			download_file_from_google_drive('1ibrN3PF45pWTPCSrCZecTUK3AzcDdrv5', f_checkpoint)
 			
 	
@@ -143,6 +106,7 @@ def load_model_sentiment():
 	
 	if not f_checkpoint.exists():
         with st.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
+			from utils import download_file_from_google_drive
             download_file_from_google_drive('1ibrN3PF45pWTPCSrCZecTUK3AzcDdrv5', f_checkpoint)
 			
 	
