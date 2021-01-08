@@ -80,10 +80,10 @@ def save_response_content(response, destination):
 def get_confirm_token(response):
     for key, value in response.cookies.items():
         if key.startswith('download_warning'):
-            return value
+			return value
 
 def download_file_from_google_drive(id, destination):
-    URL = "https://docs.google.com/uc?export=download"
+	URL = "https://docs.google.com/uc?export=download"
 
     session = requests.Session()
 
