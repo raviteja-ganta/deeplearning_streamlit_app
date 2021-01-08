@@ -95,22 +95,25 @@ def load_model_ner():
 @st.cache
 def load_model_sentiment():
     """Loading already saved model"""
+    
+    url_sent = 'https://zenodo.org/api/files/c3f107db-d31e-4b27-87c0-a316620a7d3b/best_model_state_sentiment_a2.bin'
     Bertmodel = DistilBertForSequenceClassification.from_pretrained('distilbert-base-cased', num_labels = 2)
 
-    sent_model = Bertmodel
+    #sent_model = Bertmodel
     
-    save_dest = Path('model')
-    save_dest.mkdir(exist_ok=True)
+    #save_dest = Path('model')
+    #save_dest.mkdir(exist_ok=True)
     
-    f_checkpoint = Path("best_model_state_sentiment_a2.bin")
+    #f_checkpoint = Path("best_model_state_sentiment_a2.bin")
     
-    if not f_checkpoint.exists():
-        with st.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
-            from utils import download_file_from_google_drive
-            download_file_from_google_drive('1ibrN3PF45pWTPCSrCZecTUK3AzcDdrv5', f_checkpoint)
+    #if not f_checkpoint.exists():
+    #    with st.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
+    #        from utils import download_file_from_google_drive
+    #        download_file_from_google_drive('1ibrN3PF45pWTPCSrCZecTUK3AzcDdrv5', f_checkpoint)
             
     
-    sent_model.load_state_dict(torch.load(f_checkpoint, map_location = torch.device('cpu')))
+    #sent_model.load_state_dict(torch.load(f_checkpoint, map_location = torch.device('cpu')))
+    sent_model.load_state_dict(torch.load(url_sent, map_location = torch.device('cpu')))
     sent_model = sent_model.to(device)
     sent_model.eval()
     return sent_model
