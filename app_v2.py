@@ -89,7 +89,7 @@ def load_model_ner():
     
     ner_model.load_state_dict(torch.load(f_checkpoint, map_location = torch.device('cpu')))
     ner_model = ner_model.to(device)
-    
+    ner_model.eval()
     return ner_model
     
 @st.cache
@@ -112,7 +112,7 @@ def load_model_sentiment():
     
     sent_model.load_state_dict(torch.load(f_checkpoint, map_location = torch.device('cpu')))
     sent_model = sent_model.to(device)
-    
+    sent_model.eval()
     return sent_model
     
 @st.cache
