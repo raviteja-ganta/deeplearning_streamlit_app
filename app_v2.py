@@ -79,7 +79,7 @@ def load_model_ner():
     save_dest = Path('model')
     save_dest.mkdir(exist_ok=True)
     
-    f_checkpoint = Path("Streamlit app/best_model_state_ner_f2.bin")
+    f_checkpoint = Path("model/best_model_state_ner_f2.bin")
     
     if not f_checkpoint.exists():
         with st.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
@@ -102,7 +102,7 @@ def load_model_sentiment():
     save_dest = Path('model')
     save_dest.mkdir(exist_ok=True)
     
-    f_checkpoint = Path("Streamlit app/best_model_state_sentiment_a2.bin")
+    f_checkpoint = Path("model/best_model_state_sentiment_a2.bin")
     
     if not f_checkpoint.exists():
         with st.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
